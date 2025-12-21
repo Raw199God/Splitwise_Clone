@@ -4,8 +4,11 @@
 body{
   margin: 0;
   background-color: #f6f1ba;
-  height: 2000px;
   padding-top: 50px;
+}
+.layout{
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
 }
 header{
   background-color: #3398c0;
