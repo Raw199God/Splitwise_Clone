@@ -4,22 +4,91 @@
 body{
   margin: 0;
   background-color: #f6f1ba;
-  padding-top: 50px;
+  /* padding-top: 50px; */
 }
 .layout{
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
+  min-height:  calc(100vh - 50px);
 }
 header{
   background-color: #3398c0;
   height: 50px;
-  position: fixed;
+  position: relative;
   width: 100%;
   top: 0px;
   left: 0px;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   padding-inline: 20px;
   color: #f6f1ba;
+}
+header button{
+  margin-inline: 10px;
+  height: 40px;
+  border-radius: 8px;
+  border:none;
+  width:100px;
+  color:#f6f1ba ;
+  font-weight: 800;
+  font-size: 12px;
+  margin-block: 10px;
+  background-color: #cf3813;
+}
+.Dashboard{
+  padding-top: 30px;
+}
+.dashboardHeader{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-inline: 50px;
+  font-weight: 800;
+  font-size: 20px;
+  align-items: center;
+}
+.dashboardHeader button{
+  margin-inline: 10px;
+  height: 40px;
+  border-radius: 8px;
+  border:none;
+  width:100px;
+  color: white;
+  font-weight: 800;
+  font-size: 12px;
+  margin-block: 10px;
+}
+.addexpense{
+  background-color: #ff652f;
+}
+.settleup{
+  background-color: #3398c0;
+}
+.dashboardHeader button:hover{
+  filter: brightness(90%);
+}
+.owecontainer{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border: solid 1px black;
+}
+#modal-root{
+  background-color: rgba(83, 81, 81,0.5);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.addexpensemodalbox{
+  background-color: #f6f1ba;
+  height: 70vh;
+  width: 40vw;
+  border-radius: 10px;
 }

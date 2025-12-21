@@ -1,7 +1,5 @@
-import React from 'react'
+import React from "react";
 
 export default function Friends() {
-  return (
-    <div>Friends</div>
-  )
+  return <div style={{ borderLeft: "1px solid black", paddingTop:'30px' }}>Friends</div>;
 }

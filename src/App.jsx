@@ -6,7 +6,7 @@ import Friends from './components/Friends'
 function App() {
   return (
     <>
-     <Header/>
+     <Header content='Your Own SplitWise'/>
      <div className='layout'>
       <Selector/>
      <Outlet />
