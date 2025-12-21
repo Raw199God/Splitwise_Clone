@@ -1,7 +1,8 @@
-import React from 'react'
-
+import SelectorGroups from './SelectorGroups'
 export default function Selector() {
   return (
-    <div style={{borderRight:'1px solid black',paddingTop:'30px'}}>Selector</div>
+    <div className= 'selector' >
+        <SelectorGroups/>
+    </div>
   )
 }

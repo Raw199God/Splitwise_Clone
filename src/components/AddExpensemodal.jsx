@@ -12,7 +12,9 @@ export default function AddExpensemodal({ addingexpense, setaddingexpense }) {
           e.stopPropagation();
         }}
       >
-        <Header content='Add Expense'><button onClick={closeaddinexpensemodal}>Close</button></Header>
+        <header>
+          Add Expense<button onClick={closeaddinexpensemodal}>Close</button>
+        </header>
       </div>
     </div>,
     document.body

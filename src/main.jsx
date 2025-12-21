@@ -5,6 +5,18 @@ import App from './App.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router'
 import Dashboard from './components/Dashboard.jsx'
 
+if(!JSON.parse(localStorage.getItem('loggedin'))){
+  const gmailRegex = /^[a-zA-Z0-9](\.?[a-zA-Z0-9]){5,29}@gmail\.com$/;
+  const currentuser = prompt('Sign Up/Sign In (Enter Gmail)') ;
+  if(gmailRegex.test(currentuser)){
+    localStorage.setItem('currentuser' , currentuser) ; 
+    localStorage.setItem('loggedin' , true) ; 
+  }
+  else{
+    alert('Invalid Gmail');
+    location.reload();
+  }
+}
 const router = createBrowserRouter([{
   path:'/',
   element:<App />,
