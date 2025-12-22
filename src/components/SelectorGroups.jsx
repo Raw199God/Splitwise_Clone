@@ -1,15 +1,23 @@
-import React, { useContext } from 'react'
+import { useContext } from 'react'
 import { Link } from 'react-router'
-import { groupscontext } from '../contexts/groupscontext'
-
+import { usercontext } from '../contexts/usercontext'
+import Addgroup from './Addgroup';
 export default function SelectorGroups() {
-  const [groups,setgroups] = useContext(groupscontext) ; 
-  console.log(groups);
+  const [userdata,setuserdata] = useContext(usercontext) ;
   return (
     <div className="selectorgroups">
         <div className='groupsheader'>Groups
+          <Addgroup/>
         </div>
-
+        {
+          userdata.groups?.map((group)=>{
+            return <Link to = {`/groups/${group.gid}`} key={group.gid}>
+        <button>
+          {group.gname}
+        </button>
+        </Link >
+          })
+        }
     </div>
   )
 }

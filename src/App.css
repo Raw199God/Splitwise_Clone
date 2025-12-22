@@ -1,3 +1,4 @@
+@import "tailwindcss";
 *{
   box-sizing: border-box;
 }
@@ -49,7 +50,8 @@ header button{
   font-size: 20px;
   align-items: center;
 }
-.dashboardHeader button{
+.addexpense{
+  background-color: #ff652f;
   margin-inline: 10px;
   height: 40px;
   border-radius: 8px;
@@ -60,11 +62,17 @@ header button{
   font-size: 12px;
   margin-block: 10px;
 }
-.addexpense{
-  background-color: #ff652f;
-}
 .settleup{
   background-color: #3398c0;
+  margin-inline: 10px;
+  height: 40px;
+  border-radius: 8px;
+  border:none;
+  width:100px;
+  color: white;
+  font-weight: 800;
+  font-size: 12px;
+  margin-block: 10px;
 }
 button:hover{
   filter: brightness(90%);
@@ -95,4 +103,24 @@ button:hover{
 .selector{
   border-right:1px solid black;padding-top:30px;
   padding-inline: 30px;
+}
+.selectorgroups{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.groupsheader{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.addgroupform{
+  display: flex;
+  flex-direction: column;
+  padding-inline: 20px;
+  align-items: space-evenly;
+  height: 100%;
+  justify-content: space-evenly;
 }

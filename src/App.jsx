@@ -4,30 +4,37 @@ import Header from "./components/Header";
 import Selector from "./components/Selector";
 import Friends from "./components/Friends";
 import { useState } from "react";
-import { groupscontext } from "./contexts/groupscontext";
-import { userscontext } from "./contexts/userscontext";
+import { usercontext } from "./contexts/usercontext";
+function fetchuserdata() {
+  const currentuser = localStorage.getItem("currentuser");
+  const usersdata = JSON.parse(localStorage.getItem("usersdata"));
+  return (usersdata.filter((userdata) => {
+    return userdata.id == currentuser;
+  }))[0];
+}
 function App() {
-  const [groups, setgroups] = useState([
-    {
-      gid: 112312313,
-      gname: "delhi jaare behencho",
-      members: ["rishit@gmail.com"],
-    },
-  ]);
-  const [usersdata, setusersdata] = useState([]);
-  localStorage.setItem('groups',groups) ; 
-  localStorage.setItem('usersdata',usersdata) ; 
+  const [userdata, setuserdata] = useState(fetchuserdata());
+  const currentuser = localStorage.getItem("currentuser");
+  const usersdata = JSON.parse(localStorage.getItem("usersdata"));
+  const newusersdata = usersdata.map((iterdata) => {
+    console.log('setting new user data');
+    if (iterdata.id == currentuser) {
+      return userdata;
+    } else {
+      return iterdata;
+    }
+  });
+  console.log(newusersdata);
+  localStorage.setItem('usersdata' , JSON.stringify(newusersdata)) ;
   return (
-    <groupscontext.Provider value={[groups, setgroups]}>
-      <userscontext.Provider value={[usersdata, setusersdata]}>
-        <Header content="Your Own SplitWise" />
-        <div className="layout">
-          <Selector />
-          <Outlet />
-          <Friends />
-        </div>
-      </userscontext.Provider>
-    </groupscontext.Provider>
+    <usercontext.Provider value={[userdata, setuserdata]}>
+      <Header content="Your Own SplitWise" />
+      <div className="layout">
+        <Selector />
+        <Outlet />
+        <Friends />
+      </div>
+    </usercontext.Provider>
   );
 }
 

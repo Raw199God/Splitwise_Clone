@@ -1,5 +1,4 @@
 import { createPortal } from "react-dom";
-import Header from "./Header";
 export default function AddExpensemodal({ addingexpense, setaddingexpense }) {
   function closeaddinexpensemodal(e) {
     setaddingexpense(false);
