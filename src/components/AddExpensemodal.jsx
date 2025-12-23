@@ -6,17 +6,10 @@ export default function AddExpensemodal({ addingexpense, setaddingexpense }) {
   }
   return createPortal(
     <div id="modal-root" onClick={closeaddinexpensemodal}>
-      <div
-        className="addexpensemodalbox"
-        onClick={(e) => {
-          e.stopPropagation();
-        }}
-      >
-        <header>
-          Add Expense<button onClick={closeaddinexpensemodal}>Close</button>
-        </header>
-        <Addexpenseform/>
-      </div>
+      <Addexpenseform
+        setaddingexpense={setaddingexpense}
+        addingexpense={addingexpense}
+      />
     </div>,
     document.body
   );

@@ -96,9 +96,9 @@ button:hover{
 }
 .addexpensemodalbox{
   background-color: #f6f1ba;
-  height: 70vh;
-  width: 40vw;
+  width: 30vw;
   border-radius: 10px;
+  padding-bottom: 10vh;
 }
 .selector{
   border-right:1px solid black;padding-top:30px;
