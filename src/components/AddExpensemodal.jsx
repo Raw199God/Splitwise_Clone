@@ -1,4 +1,5 @@
 import { createPortal } from "react-dom";
+import Addexpenseform from "./AddExpenseform";
 export default function AddExpensemodal({ addingexpense, setaddingexpense }) {
   function closeaddinexpensemodal(e) {
     setaddingexpense(false);
@@ -14,6 +15,7 @@ export default function AddExpensemodal({ addingexpense, setaddingexpense }) {
         <header>
           Add Expense<button onClick={closeaddinexpensemodal}>Close</button>
         </header>
+        <Addexpenseform/>
       </div>
     </div>,
     document.body

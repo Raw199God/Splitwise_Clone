@@ -15,7 +15,7 @@ export default function Addgroupmodal({ addinggroup, setaddinggroup }) {
         <header>
           Add group<button onClick={closeaddingroupmodal}>Close</button>
         </header>
-        <Addgroupform/>
+        <Addgroupform setaddinggroup={setaddinggroup}/>
       </div>
     </div>,
     document.body

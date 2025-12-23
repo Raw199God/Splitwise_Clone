@@ -2,7 +2,6 @@ import { Outlet } from "react-router";
 import "./App.css";
 import Header from "./components/Header";
 import Selector from "./components/Selector";
-import Friends from "./components/Friends";
 import { useState } from "react";
 import { usercontext } from "./contexts/usercontext";
 function fetchuserdata() {
@@ -17,14 +16,12 @@ function App() {
   const currentuser = localStorage.getItem("currentuser");
   const usersdata = JSON.parse(localStorage.getItem("usersdata"));
   const newusersdata = usersdata.map((iterdata) => {
-    console.log('setting new user data');
     if (iterdata.id == currentuser) {
       return userdata;
     } else {
       return iterdata;
     }
   });
-  console.log(newusersdata);
   localStorage.setItem('usersdata' , JSON.stringify(newusersdata)) ;
   return (
     <usercontext.Provider value={[userdata, setuserdata]}>
@@ -32,7 +29,6 @@ function App() {
       <div className="layout">
         <Selector />
         <Outlet />
-        <Friends />
       </div>
     </usercontext.Provider>
   );
