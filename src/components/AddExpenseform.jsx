@@ -9,15 +9,25 @@ import {
 } from "../contexts/modifyingexpensecontext";
 import Paidbymodal from "./paidbymodal";
 import Splitbymodal from "./Splitbymodal";
+
+
+
 export default function Addexpenseform({ addingexpense, setaddingexpense }) {
   const group = useContext(groupcontext);
   const [modifying, setmodifying] = useState("none");
   const [paidby, setpaidby] = useState(localStorage.getItem("currentuser"));
   const splitbymap = {};
+  let groupsdata = JSON.parse(localStorage.getItem("groupsdata"));
   group.emails.map((e) => {
     splitbymap[e] = true;
   });
   const [splitby, setsplitby] = useState(splitbymap);
+  let cnt = 0;
+  for (let k in splitby) {
+    if (splitby[k]) {
+      cnt += 1;
+    }
+  }
   function closeaddinexpensemodal() {
     setaddingexpense(false);
   }
@@ -32,17 +42,12 @@ export default function Addexpenseform({ addingexpense, setaddingexpense }) {
       paidby,
       splitby,
     };
-    const usersdata = JSON.parse(localStorage.getItem("usersdata"));
-    console.log(usersdata);
-    // usersdata.map((user) => {
-    //   if (user.id === localStorage.getItem("currentuser")) {
-    //     user.groups.map((grp) => {
-    //       if (grp.id == group.id) {
-    //         grp.expenses.push(expense);
-    //       }
-    //     });
-    //   }
-    // });
+    groupsdata.map((grp) => {
+      if (grp.id === group.id) {
+        grp.expenses.push(expense);
+      }
+    });
+    localStorage.setItem('groupsdata' , JSON.stringify(groupsdata)) ; 
     closeaddinexpensemodal();
   }
   return (
@@ -103,11 +108,7 @@ export default function Addexpenseform({ addingexpense, setaddingexpense }) {
                       setmodifying("splitby");
                     }}
                   >
-                    {group.emails.length == splitby.length ? (
-                      <>by all</>
-                    ) : (
-                      <>by some</>
-                    )}
+                    {group.emails.length == cnt ? <>by all</> : <>by some</>}
                   </button>
                 </div>
                 <div className="flex justify-center overflow-hidden">

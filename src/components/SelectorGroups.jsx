@@ -10,10 +10,10 @@ export default function SelectorGroups() {
           <Addgroup/>
         </div>
         {
-          userdata.groups?.map((group)=>{
-            return <Link to = {`/groups/${group.gid}`} key={group.gid}>
+          userdata.groups?.map(({gid,gname})=>{
+            return <Link to = {`/groups/${gid}`} key={gid}>
         <button className='bg-blue-400 w-23 m-3 h-10 text-xs rounded-xl text-white font-bold'>
-          {group.gname}
+          {gname}
         </button>
         </Link >
           })

@@ -5,7 +5,8 @@ import { usercontext } from "../contexts/usercontext";
 export default function Groupbalances() {
     const [userdata] = useContext(usercontext) ; 
     const params = useParams() ;
-    const group = userdata.groups.filter((itergrps)=>{
+    const groupsdata = JSON.parse(localStorage.getItem('groupsdata'));
+    const group = groupsdata.filter((itergrps)=>{
        return itergrps.gid == params.gid ;
     })[0]
   return (

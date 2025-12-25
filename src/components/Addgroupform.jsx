@@ -4,6 +4,7 @@ import { usercontext } from "../contexts/usercontext";
 export default function Addgroupform({setaddinggroup}) {
   const [userdata,setuserdata] = useContext(usercontext) ;
   let usersdata = JSON.parse(localStorage.getItem('usersdata')) ; 
+  let groupsdata = JSON.parse(localStorage.getItem('groupsdata')) ; 
   function groupformsubmit(data) {
     let emails = (data.get('emails').split(','));
     const gname = data.get('name') ; 
@@ -12,27 +13,25 @@ export default function Addgroupform({setaddinggroup}) {
       const ind  = usersdata.find((datauser)=>{
         return datauser.id == email ;
       }) ;
-      if(email == localStorage.getItem('currentuser')) return false ;
       return (ind)?true:false ;
     })
     emails.push(localStorage.getItem('currentuser')) ; 
     const emailsn = new Set(emails);
     emails = [] ;
     emailsn.forEach((e)=>{
-      // console.log(e);
       emails.push(e);
     })
     emails.map((email)=>{
       const ind  = usersdata.findIndex((datauser)=>{
         return datauser.id == email ;
       }) ;
-      usersdata[ind].groups.push({gid,gname,emails,expenses:[]}) ; 
+      usersdata[ind].groups.push({gname,gid}) ; 
     })
     localStorage.setItem('usersdata' , JSON.stringify(usersdata)) ; 
+    groupsdata.push({gid,gname,emails,expenses:[]})
+    localStorage.setItem('groupsdata' , JSON.stringify(groupsdata)) ; 
     setuserdata((data)=>{
-      return {...data,groups:[...data.groups,{
-      gid,gname,emails,expenses:[]
-    }]}
+      return {...data,groups:[...data.groups,{gid,gname}]}
     })
     setaddinggroup(false);
   }

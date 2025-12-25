@@ -5,7 +5,7 @@ export default function Selectsplitby({email}) {
   const [splitby, setsplitby] = useContext(splitbycontext);
   return (
     <button
-      className={splitby[email] ? "bg-amber-500 w-1/1" : "bg-amber-500 w-1/1 selected"}
+      className={splitby[email] ? "bg-blue-300 w-3/5 h-15  rounded-2xl" : "bg-fuchsia-300 w-3/5 h-15 selected rounded-2xl"}
       onClick={() => {
             setsplitby((inp) => { return  {...inp,[email]:!inp[email]}} );
       }}

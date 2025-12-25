@@ -6,7 +6,7 @@ export default function Splitbymodal() {
   const [splitby,setsplitby] = useContext(splitbycontext) ;
   const group = useContext(groupcontext) ;
   return (
-    <div className='bg-[#f6f1ba] w-80 h-100 m-10' onClick={(e)=>{e.stopPropagation()}}>
+    <div className='bg-[#f6f1ba] w-80 h-100 m-10 flex flex-col justify-evenly items-center' onClick={(e)=>{e.stopPropagation()}}>
       {
         group.emails.map((email)=>{
           return (
