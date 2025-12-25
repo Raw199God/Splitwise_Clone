@@ -9,8 +9,6 @@ export default function Dashboard() {
       <div className='dashboardHeader'>
         Dashboard
       <div>
-        <AddExpense/>
-        <Settleup />
       </div>
       </div>
       <div className='owecontainer'>

@@ -6,41 +6,46 @@ export default function Addgroupform({setaddinggroup}) {
   let usersdata = JSON.parse(localStorage.getItem('usersdata')) ; 
   function groupformsubmit(data) {
     let emails = (data.get('emails').split(','));
-    emails.push(localStorage.getItem('currentuser')) ; 
     const gname = data.get('name') ; 
     const gid = crypto.randomUUID() ;
     emails = emails.filter((email)=>{
       const ind  = usersdata.find((datauser)=>{
         return datauser.id == email ;
       }) ;
+      if(email == localStorage.getItem('currentuser')) return false ;
       return (ind)?true:false ;
+    })
+    emails.push(localStorage.getItem('currentuser')) ; 
+    const emailsn = new Set(emails);
+    emails = [] ;
+    emailsn.forEach((e)=>{
+      // console.log(e);
+      emails.push(e);
     })
     emails.map((email)=>{
       const ind  = usersdata.findIndex((datauser)=>{
         return datauser.id == email ;
       }) ;
-      usersdata[ind].groups.push({gid,gname,emails}) ; 
+      usersdata[ind].groups.push({gid,gname,emails,expenses:[]}) ; 
     })
     localStorage.setItem('usersdata' , JSON.stringify(usersdata)) ; 
     setuserdata((data)=>{
       return {...data,groups:[...data.groups,{
-      gid,gname,emails
+      gid,gname,emails,expenses:[]
     }]}
     })
     setaddinggroup(false);
   }
   return (
-    <form action={groupformsubmit} className="addgroupform text-3xl">
+    <form action={groupformsubmit} className="addgroupform text-l">
       <div className="flex-col justify-center align-middle">
-        <div>Enter Group Name</div>
-        <input type="text" name="name" className="bg-amber-200 w-80 h-10 mt-10"  required/>
+        <input type="text" name="name" className="bg-amber-200 w-80 h-10 mt-10"  required placeholder="Enter Group Name"/>
       </div>
       <div className="flex-col justify-center align-middle">
-        <div>Enter emails to invite seperated by commas</div>
-        <input type="text" name="emails" className="bg-amber-200 w-80 h-10 mt-10" required />
+        <input type="text" name="emails" className="bg-amber-200 w-80 h-10 mt-10" required placeholder="Enter emails to invite seperated by commas"/>
       </div>
       <div className="flex justify-center overflow-hidden">
-      <button type="submit" className="bg-amber-600 w-80 h-12"> Add Group </button>
+      <button type="submit" className="bg-amber-600 w-80 h-12 mt-10"> Add Group </button>
       </div>
     </form>
   );

@@ -1,6 +1,7 @@
 @import "tailwindcss";
 *{
   box-sizing: border-box;
+  user-select: none;
 }
 body{
   margin: 0;
@@ -49,6 +50,7 @@ header button{
   font-weight: 800;
   font-size: 20px;
   align-items: center;
+  /* font-size: 35px; */
 }
 .addexpense{
   background-color: #ff652f;
@@ -96,7 +98,7 @@ button:hover{
 }
 .addexpensemodalbox{
   background-color: #f6f1ba;
-  width: 30vw;
+  width: 40vw;
   border-radius: 10px;
   padding-bottom: 10vh;
 }
@@ -123,4 +125,7 @@ button:hover{
   align-items: space-evenly;
   height: 100%;
   justify-content: space-evenly;
+}
+.selected{
+  text-decoration: line-through;
 }
