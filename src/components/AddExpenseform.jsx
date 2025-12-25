@@ -35,12 +35,14 @@ export default function Addexpenseform({ addingexpense, setaddingexpense }) {
     const description = data.get("description");
     const amount = parseFloat(data.get("amount"));
     const expenseid = crypto.randomUUID();
+    const date = data.get('date')
     const expense = {
       expenseid,
       description,
       amount,
       paidby,
       splitby,
+      date
     };
     groupsdata.map((grp) => {
       if (grp.id === group.id) {
@@ -49,6 +51,7 @@ export default function Addexpenseform({ addingexpense, setaddingexpense }) {
     });
     localStorage.setItem('groupsdata' , JSON.stringify(groupsdata)) ; 
     closeaddinexpensemodal();
+    location.reload() ;
   }
   return (
     <splitbycontext.Provider value={[splitby, setsplitby]}>
@@ -88,6 +91,7 @@ export default function Addexpenseform({ addingexpense, setaddingexpense }) {
                     placeholder="0.00"
                     step="0.01"
                   />
+                  <input type="date" name="date"/>
                 </div>
                 <div className="text-[#737171] m-10">
                   Paid by{" "}

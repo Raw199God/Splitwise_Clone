@@ -3,10 +3,10 @@ import AddExpense from "./AddExpense";
 import Settleup from "./Settleup";
 import Groupbalances from "./Groupbalances";
 import { groupcontext } from "../contexts/modifyingexpensecontext";
+import Expense from "./Expense";
 export default function Groupdetails() {
     const params = useParams() ;
     const groupsdata = JSON.parse(localStorage.getItem('groupsdata'));
-    // console.log(groupsdata);
     const group = groupsdata.filter((itergrp)=>{
       return itergrp.gid == params.gid ; 
     })[0] ;
@@ -20,6 +20,13 @@ export default function Groupdetails() {
         <Settleup/>
       </div>
       </div>
+      {
+        group.expenses.map((expense)=>{
+          return (
+            <Expense expense ={expense} key={expense.expenseid}/>
+          )
+        })
+      }
     </div>
     <Groupbalances/>
     </groupcontext.Provider>
