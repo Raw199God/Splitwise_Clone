@@ -13,7 +13,7 @@ import Splitbymodal from "./Splitbymodal";
 
 
 export default function Addexpenseform({ addingexpense, setaddingexpense }) {
-  const group = useContext(groupcontext);
+  const [group,setgroup] = useContext(groupcontext);
   const [modifying, setmodifying] = useState("none");
   const [paidby, setpaidby] = useState(localStorage.getItem("currentuser"));
   const splitbymap = {};
@@ -44,14 +44,10 @@ export default function Addexpenseform({ addingexpense, setaddingexpense }) {
       splitby,
       date
     };
-    groupsdata.map((grp) => {
-      if (grp.id === group.id) {
-        grp.expenses.push(expense);
-      }
-    });
-    localStorage.setItem('groupsdata' , JSON.stringify(groupsdata)) ; 
+    setgroup((oldgroup)=>{
+      return {...oldgroup,expenses : [...oldgroup.expenses,expense] }
+    })
     closeaddinexpensemodal();
-    location.reload() ;
   }
   return (
     <splitbycontext.Provider value={[splitby, setsplitby]}>

@@ -3,7 +3,7 @@ import { groupcontext, paidbycontext } from "../contexts/modifyingexpensecontext
 
 export default function Paidbymodal() {
   const [paidby,setpaidby] = useContext(paidbycontext) ;
-  const group = useContext(groupcontext) ;
+  const [group,setgroup] = useContext(groupcontext) ;
   console.log(group);
   return (
       <div className='bg-[#f6f1ba] w-80 h-100 m-10 flex flex-col justify-evenly items-center ' onClick={(e)=>{e.stopPropagation()} }>

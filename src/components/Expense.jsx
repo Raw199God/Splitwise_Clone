@@ -37,7 +37,7 @@ export default function Expense({expense}) {
             <div className={"text-gray-500 text-xs"}>
                 {!willsplit?'Not Involved':(owed > 0)?'You Lent':'You Owe'} 
             </div>
-            {willsplit && <div className={"text-xl font-bold " + ((owed<0)?'text-amber-600':'text-[#3398c0]')}>
+            {willsplit && <div className={"text-xl font-bold " + ((owed<0)?'text-amber-600':'text-[#7ac033]')}>
                 ₹ {(owed>0)?owed.toFixed(2):(-owed).toFixed(2)}   
             </div>}
         </div>

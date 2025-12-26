@@ -4,14 +4,20 @@ import Settleup from "./Settleup";
 import Groupbalances from "./Groupbalances";
 import { groupcontext } from "../contexts/modifyingexpensecontext";
 import Expense from "./Expense";
+import { useState } from "react";
 export default function Groupdetails() {
     const params = useParams() ;
     const groupsdata = JSON.parse(localStorage.getItem('groupsdata'));
-    const group = groupsdata.filter((itergrp)=>{
+    const [group,setgroup] = useState(groupsdata.filter((itergrp)=>{
       return itergrp.gid == params.gid ; 
-    })[0] ;
+    })[0]) ;
+    const index  = groupsdata.findIndex((itergrp)=>{
+      return itergrp.gid == group.gid ;
+    })
+    groupsdata[index] = group ;
+    localStorage.setItem('groupsdata' , JSON.stringify(groupsdata)) ; 
   return (
-    <groupcontext.Provider value={group}>
+    <groupcontext.Provider value={[group,setgroup]}>
       <div className='Dashboard' >
       <div className='dashboardHeader'>
         {group?.gname} - {group?.emails.length} members
