@@ -4,7 +4,7 @@ import './index.css'
 import App from './App.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router'
 import Dashboard from './components/Dashboard.jsx'
-import Groupdetails from './components/groupdetails.jsx'
+import Groupdetails from './components/Groupdetails.jsx'
 if(!localStorage.getItem('usersdata')) localStorage.setItem('usersdata',JSON.stringify([])) ; 
 if(!localStorage.getItem('groupsdata')) localStorage.setItem('groupsdata',JSON.stringify([])) ; 
 if(!JSON.parse(localStorage.getItem('loggedin'))){
